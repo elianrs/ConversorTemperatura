@@ -12,7 +12,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText entradaEditText;
-    private Button fahrenheitCelsiusButton;
+    private Button fahrenheitButton;
+    private Button celsiusButton;
     private TextView saidaTextView;
 
     @Override
@@ -20,17 +21,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        entradaEditText = findViewById(R.id.edittext_fahrenheit);
+        entradaEditText = findViewById(R.id.edittext_temperatura);
         saidaTextView = findViewById(R.id.textview_saida);
-        fahrenheitCelsiusButton = findViewById(R.id.button_converter);
+        fahrenheitButton = findViewById(R.id.button_fahrenheit);
+        celsiusButton = findViewById(R.id.button_celsius);
 
-        fahrenheitCelsiusButton.setOnClickListener(this);
+        fahrenheitButton.setOnClickListener(this);
+        celsiusButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == fahrenheitCelsiusButton){
+        if(v == celsiusButton){
             convCelsius();
+        }
+        if(v == fahrenheitButton){
+            convFahrenheit();
         }
     }
 
@@ -57,5 +63,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         saidaTextView.setText(String.format("%.2f °C", valor));
+    }
+
+    private void convFahrenheit(){
+        double valor;
+
+        try{
+            valor = getEntrada();
+            valor = 1.8 * valor + 32;
+        }catch (NumberFormatException ex){
+            Toast.makeText(this, "Entrada inválida!", Toast.LENGTH_SHORT).show();
+            valor = 0;
+        }
+
+        saidaTextView.setText(String.format("%.2f °F", valor));
     }
 }

@@ -8,27 +8,46 @@
     android:orientation="vertical">
 
     <EditText
-        android:hint="Temperatura em Fahrenheit"
-        android:id="@+id/edittext_fahrenheit"
+        android:hint="Temperatura"
+        android:id="@+id/edittext_temperatura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold"
         android:inputType="numberDecimal"/>
-    <Button
+
+    <LinearLayout
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:id="@+id/button_converter"
-        android:text="Converter para Celsius"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/button_celsius"
+        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:text="Celsius" />
+
+    <Button
+        android:id="@+id/button_fahrenheit"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fahrenheit" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_marginTop="30dp"
         android:id="@+id/textview_saida"
         android:textColor="#CD2222"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
